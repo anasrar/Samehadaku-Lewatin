@@ -1,0 +1,26 @@
+{
+  "name": "samehadaku-lewatin",
+  "version": "1.0.0",
+  "description": "Just Samehadaku Lewatin Short URL",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true,
+  "keywords": [
+    "Anime",
+    "Downloader"
+  ],
+  "author": "Anas RAR",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "cheerio": "^1.0.0-rc.2",
+    "commander": "^2.19.0",
+    "extract-domain": "^2.0.4",
+    "figlet": "^1.2.1",
+    "inquirer": "^6.2.2",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  }
+}
