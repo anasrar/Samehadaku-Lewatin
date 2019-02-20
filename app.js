@@ -7,7 +7,7 @@ const cheerio = require("cheerio");
 const extractDomain = require('extract-domain');
 
 let url = "https://www.samehadaku.tv/";
-let shorturl = ['coeg.in', 'tetew.info', 'greget.space'];
+let shorturl = ['coeg.in', 'tetew.info', 'greget.space', 'siherp.com'];
 
 const querySearch = (q, u) => {
     if (!u) u = url;
