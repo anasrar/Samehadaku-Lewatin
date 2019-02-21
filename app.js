@@ -5,6 +5,7 @@ const chalk = require("chalk");
 const request = require("request-promise");
 const cheerio = require("cheerio");
 const extractDomain = require('extract-domain');
+const clipboard = require('clipboardy');
 
 let url = "https://www.samehadaku.tv/";
 let shorturl = ['coeg.in', 'tetew.info', 'greget.space', 'siherp.com'];
@@ -18,10 +19,14 @@ const querySearch = (q, u) => {
 	return results == null ? null : results[1];
 }
 
-program.command("list").description("Get List Update Anime {Name, Link, and Date}").action(() => {
+program.command("list").description("Get List Update Anime { Name, Link, and Date }").action(() => {
 
     figlet('SamehadakuLewatin', (err, data) => {
-        console.log(chalk.yellow(data))
+        console.log(chalk.yellow(data));
+        console.log('===============================================================');
+        console.log('🔨  Version    : 1.2.8');
+        console.log('📚  Repository : https://github.com/anasrar/Samehadaku-Lewatin');
+        console.log('===============================================================');
     });
 
     let arrData = [];
@@ -36,8 +41,8 @@ program.command("list").description("Get List Update Anime {Name, Link, and Date
                 name: $(el).find('.post-title').text(),
                 value: $(el).find('.post-title>a').attr('href')
             },
-            new inquirer.Separator(chalk.gray($(el).find('.date.meta-item').text())),
-            new inquirer.Separator(chalk.green($(el).find('.post-title>a').attr('href'))),
+            new inquirer.Separator('⏲  '+chalk.gray($(el).find('.date.meta-item').text())),
+            new inquirer.Separator('👉  '+chalk.green($(el).find('.post-title>a').attr('href'))),
             new inquirer.Separator(chalk.red("==========================="))
             );
             // console.log(chalk.green($(el).find('.post-title').text()));
@@ -86,10 +91,11 @@ program.command("list").description("Get List Update Anime {Name, Link, and Date
 
                     $('li').each((i, el) => {
 
-                        arrData.push(new inquirer.Separator(chalk.red($(el).find('strong').text())));
+                        let reso = $(el).find('strong').text();
+                        arrData.push(new inquirer.Separator(chalk.green(`== ${reso} ==`)));
                         $(el).find('a').each((i, el) => {
                             arrData.push({
-                                name: $(el).text(),
+                                name: $(el).text() + ' ['+reso+']',
                                 value: $(el).attr('href')
                             });
                             // console.log($(el).attr('href'));
@@ -109,16 +115,25 @@ program.command("list").description("Get List Update Anime {Name, Link, and Date
                             let url = $('#splash').find('a[href*="?r=a"]').attr('href');
                             url = Buffer.from(querySearch('r', url), 'base64').toString('ascii');
                             next = shorturl.indexOf(extractDomain(url)) !== -1 ? url : false;
-                        }).then(() => {
+                        }).then((a) => {
                             if (next) {
                                 request(next, (err, res, body) => {
                                     if (err && res.statusCode !== 200) throw err;
                                     let $ = cheerio.load(body);
                                     let url = $('#splash').find('a[href*="?r=a"]').attr('href');
                                     url = Buffer.from(querySearch('r', url), 'base64').toString('ascii');
-                                    console.log(url);
+                                    console.log('🌐  URL : '+chalk.blue(url));
+                                    clipboard.writeSync(url); 
+                                    console.log(chalk.green('✅  URL Has Copy On Your Clipboard'))
                                     // next = shorturl.indexOf(extractDomain(url)) !== -1 ? url : false;
                                 })
+                            } else {
+                                let $ = cheerio.load(a);
+                                let url = $('#splash').find('a[href*="?r=a"]').attr('href');
+                                url = Buffer.from(querySearch('r', url), 'base64').toString('ascii');
+                                console.log('🌐  URL : '+chalk.blue(url));
+                                clipboard.writeSync(url); 
+                                console.log(chalk.green('✅  URL Has Copy On Your Clipboard'))
                             }
                         });
                     });
