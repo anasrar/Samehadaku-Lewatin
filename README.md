@@ -38,6 +38,12 @@ $ npm app.js list
 
 ![DEMO](DEMO.gif)
 
+## Changelog
+### 1.2.8 - 22/02/2019
+#### Added
+- Copy to clipboard
+- New Safelink URL [ siherp.com ]
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
