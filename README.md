@@ -32,13 +32,26 @@ $ npm install
 
 ### How To Use
 
+Get List Anime From Homepage
 ```
 $ npm app.js list
 ```
 
 ![DEMO](DEMO.gif)
 
+___
+
+Get List Anime From Specific Page
+```
+$ npm app.js page <int>
+```
+
 ## Changelog
+### 1.2.9 - 23/02/2019
+#### Added
+- Command Page
+- Optimizing Code
+
 ### 1.2.8 - 22/02/2019
 #### Added
 - Copy to clipboard
