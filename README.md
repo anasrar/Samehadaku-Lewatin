@@ -46,9 +46,16 @@ Get List Anime From Specific Page
 $ npm app.js page <int>
 ```
 
+Save All Link Quality From Specific Page
+```
+$ npm app.js savelink <url>
+```
+Link Save In JSON Format On save.txt File
+
 ## Changelog
 ### 1.2.9 - 23/02/2019
 #### Added
+- Command Save 1 Quality Link As Text File https://github.com/anasrar/Samehadaku-Lewatin/issues/1
 - Command Page
 - Optimizing Code
 
