@@ -1,3 +1,4 @@
+const fs = require("fs");
 const program =  require("commander");
 const inquirer = require("inquirer");
 const figlet =  require("figlet");
@@ -97,7 +98,7 @@ const myfunc = {
 
                         $('li').each((i, el) => {
 
-                            let reso = $(el).find('strong').text();
+                            let reso = $(el).find('strong').text().trim();
                             arrData.push(new inquirer.Separator(chalk.green(`== ${reso} ==`)));
                             $(el).find('a').each((i, el) => {
                                 arrData.push({
@@ -144,6 +145,73 @@ const myfunc = {
             });
         });
 
+    },
+    asJSON: (url) => {
+        let collect = {};
+        let arrData = [];
+
+        request(url, (err, res, body) => {
+            if (err && res.statusCode !== 200) throw err;
+            let $ = cheerio.load(body);
+
+            $('#the-post').find('.download-eps').each((i, el) => {
+
+                arrData.push(
+                {
+                    name: $(el).prev().text(),
+                    value: $(el).html()
+                });
+
+            });
+
+            inquirer.prompt([{
+                type: "list",
+                name: "format",
+                message: "Select The Format",
+                choices: arrData
+            }]).then((answer) => {
+                let $ = cheerio.load(answer.format);
+                arrData = [];
+
+                $('li').each((i, el) => {
+                    let reso = $(el).find('strong').text().trim();
+                    collect[reso] = {};
+                    $(el).find('a').each((i, el) => {
+                        let server = $(el).text().trim();
+                        let link = $(el).attr('href');
+                        collect[reso][server] = link;
+                        let next = !1;
+                        request($(el).attr('href'), (err, res, body) => {
+                            if (err && res.statusCode !== 200) throw err;
+                            let $ = cheerio.load(body);
+
+                            let url = $('#splash').find('a[href*="?r=a"]').attr('href');
+                            url = Buffer.from(querySearch('r', url), 'base64').toString('ascii');
+                            collect[reso][server] = url;
+
+                            next = shorturl.indexOf(extractDomain(url)) !== -1 ? url : false;
+                        }).then((a) => {
+                            if (next) {
+                                request(next, (err, res, body) => {
+                                    if (err && res.statusCode !== 200) throw err;
+                                    let $ = cheerio.load(body);
+                                    let url = $('#splash').find('a[href*="?r=a"]').attr('href');
+                                    url = Buffer.from(querySearch('r', url), 'base64').toString('ascii');
+
+                                    collect[reso][server] = url;
+                                }).then(() => {
+                                    fs.writeFileSync('./save.txt',JSON.stringify(collect, null, 4)) 
+                                });
+                            } else {
+                                fs.writeFileSync('./save.txt',JSON.stringify(collect, null, 4))
+                            }
+                        })
+                    });
+                });
+
+            });
+
+        });
     }
 }
 
@@ -160,8 +228,16 @@ program.command("list").description("Get List Update Anime { Name, Link, and Dat
 program.command("page <int>").description("Get List Anime From Page { Name, Link, and Date }").action((int) => {
 
     myfunc.init();
-    console.log(chalk.yellow('⏳  Getting List Anime From Page '+int+'...'));
+    console.log(chalk.yellow('⏳  Getting List Anime From Page '+int));
     myfunc.getFromList(url+'page/'+int);
+
+});
+
+program.command("savelink <url>").description("Get and Save Link As JSON File From Page { Resolution, Link, and Format }").action((url) => {
+
+    myfunc.init();
+    console.log(chalk.yellow('⏳  Getting Link Anime From URL '+url));
+    myfunc.asJSON(url);
 
 });
 
