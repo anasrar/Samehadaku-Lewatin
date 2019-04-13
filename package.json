@@ -1,7 +1,7 @@
 {
   "name": "samehadaku-lewatin",
-  "version": "1.0.0",
-  "description": "Just Samehadaku Lewatin Short URL",
+  "version": "2.0.1",
+  "description": "Just Samehadaku Bypass Short URL",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,19 +9,30 @@
   "private": true,
   "keywords": [
     "Anime",
-    "Downloader"
+    "Downloader",
+    "Bypass"
   ],
   "author": "Anas RAR",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anasrar/Samehadaku-Lewatin"
+  },
   "dependencies": {
     "chalk": "^2.4.2",
-    "cheerio": "^1.0.0-rc.2",
-    "clipboardy": "^1.2.3",
-    "commander": "^2.19.0",
-    "extract-domain": "^2.0.4",
-    "figlet": "^1.2.1",
+    "cheerio": "^1.0.0-rc.3",
+    "clipboardy": "^2.0.0",
     "inquirer": "^6.2.2",
+    "minimist": "^1.2.0",
     "request": "^2.88.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.4"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "samehadaku": "app.js"
   }
 }
