@@ -3,7 +3,7 @@ import chalk from 'chalk';
 import minimist from 'minimist';
 
 let url = "https://www.samehadaku.tv/",
-    version = "2.0.1";
+    version = "2.1.1";
 
 console.log(`${chalk.yellow(`╔═╗╔═╗╔╦╗╔═╗╦ ║╔═╗╔╦╗╔═╗╦╔═║ ╦  ╦  ╔═╗╦ ╦╔═╗╔╦╗╦╔╗║
 ╚═╗╠═╣║║║║╣ ╠═╣╠═╣ ║║╠═╣╠╩╗║ ║  ║  ║╣ ║║║╠═╣ ║ ║║║║
@@ -29,14 +29,22 @@ switch (cmd) {
         break;
     case 'search':
         let query = args._[1] || "";
-        getListSearch(url+'?s='+encodeURIComponent(query), (args.s === true || args.save === true));
+        getListSearch(url + '?s=' + encodeURIComponent(query), (args.s === true || args.save === true));
+        break;
+    case 'from':
+        let laman = args._[1] || url;
+        if (laman == url) {
+            getList(url, (args.s === true || args.save === true));
+        } else {
+            getLinks(laman, (args.s === true || args.save === true));
+        }
         break;
     case 'help':
         console.log(
 `Usage: samehadaku <command> [options]
 
 where <command> is one of:
-    list, page, search, help
+    list, page, search, help, from
 
 options: [-s|--save] for save link to text file with json format`
         );
