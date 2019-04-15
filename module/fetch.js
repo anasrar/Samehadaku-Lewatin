@@ -78,9 +78,9 @@ export const getList = (url, save = false) => {
         if (err && res.statusCode !== 200) throw err;
 
         let $ = cheerio.load(body),
-        list = $('#tie-block_2598').find('.posts-items>li'),
-        prev = $('#tie-block_2598').find('li.current').prev(),
-        next = $('#tie-block_2598').find('li.current').next();
+        list = $('#tie-block_1744').find('.posts-items>li'),
+        prev = $('#tie-block_1744').find('li.current').prev(),
+        next = $('#tie-block_1744').find('li.current').next();
 
         list.each((i, el) => {
             arrQuest.push({

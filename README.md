@@ -87,6 +87,10 @@ $ samehadaku from "https://www.samehadaku.tv/2019/04/fairy-tail-episode-304-subt
 Link Save In JSON Format On Some .txt File
 
 # Changelog
+## 2.1.2 - 15/04/2019
+### Fix
+- Fix Pagination
+
 ## 2.1.1 - 13/04/2019
 ### Added
 - Command From URL Page

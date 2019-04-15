@@ -3,7 +3,7 @@ import chalk from 'chalk';
 import minimist from 'minimist';
 
 let url = "https://www.samehadaku.tv/",
-    version = "2.1.1";
+    version = "2.1.2";
 
 console.log(`${chalk.yellow(`╔═╗╔═╗╔╦╗╔═╗╦ ║╔═╗╔╦╗╔═╗╦╔═║ ╦  ╦  ╔═╗╦ ╦╔═╗╔╦╗╦╔╗║
 ╚═╗╠═╣║║║║╣ ╠═╣╠═╣ ║║╠═╣╠╩╗║ ║  ║  ║╣ ║║║╠═╣ ║ ║║║║
@@ -21,11 +21,11 @@ if (args.help || args.h) {
 }
 switch (cmd) {
     case 'list':
-        getList(url, (args.s === true || args.save === true));
+        getList(url+'home-new/', (args.s === true || args.save === true));
         break;
     case 'page':
         let page = args._[1] || 1;
-        getList(url+'page/'+page, (args.s === true || args.save === true));
+        getList(url+'home-new/page/'+page, (args.s === true || args.save === true));
         break;
     case 'search':
         let query = args._[1] || "";
