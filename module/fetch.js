@@ -264,6 +264,7 @@ export const getListJSON = (url, save = false) => {
 
 export const getLinksHTML = (html, save = false) => {
     let arrQuest = [],
+        stamp = new Date().getTime(),
         $ = cheerio.load(html)
 
     $('.download-eps').each((i, el) => {
@@ -292,7 +293,7 @@ export const getLinksHTML = (html, save = false) => {
                     let server = $(el).text().trim(),
                         link = $(el).attr('href');
                     collect[reso][server] = link;
-                    Pancal(link, save, { reso, server, name: path.basename(url, '.html'), type: a.format.type })
+                    Pancal(link, save, { reso, server, name: stamp, type: a.format.type })
                 })
             })
         } else {

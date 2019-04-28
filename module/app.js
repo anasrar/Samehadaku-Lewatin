@@ -21,7 +21,7 @@ if (args.help || args.h) {
 }
 switch (cmd) {
     case 'list':
-        getListJSON(url + 'wp-json/wp/v2/posts?per_page=14&page=1&tags=9', (args.s === true || args.save === true));
+        getListJSON(url + 'wp-json/wp/v2/posts?per_page=14&tags=9&page=1', (args.s === true || args.save === true));
         break;
     case 'page':
         let page = args._[1] || 1;
@@ -34,7 +34,7 @@ switch (cmd) {
     case 'from':
         let laman = args._[1] || url;
         if (laman == url) {
-            getListJSON(url + 'wp-json/wp/v2/posts?per_page=14&page=1&tags=9', (args.s === true || args.save === true));
+            getListJSON(url + 'wp-json/wp/v2/posts?per_page=14&tags=9&page=1', (args.s === true || args.save === true));
         } else {
             getLinks(laman, (args.s === true || args.save === true));
         }
