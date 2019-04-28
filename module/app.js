@@ -1,9 +1,9 @@
-import { getList, getLinks, Pancal, getListSearch } from './fetch';
+import { getList, getLinks, Pancal, getListSearch, getListJSON } from './fetch';
 import chalk from 'chalk';
 import minimist from 'minimist';
 
 let url = "https://www.samehadaku.tv/",
-    version = "2.1.2";
+    version = "2.2.3";
 
 console.log(`${chalk.yellow(`╔═╗╔═╗╔╦╗╔═╗╦ ║╔═╗╔╦╗╔═╗╦╔═║ ╦  ╦  ╔═╗╦ ╦╔═╗╔╦╗╦╔╗║
 ╚═╗╠═╣║║║║╣ ╠═╣╠═╣ ║║╠═╣╠╩╗║ ║  ║  ║╣ ║║║╠═╣ ║ ║║║║
@@ -21,11 +21,11 @@ if (args.help || args.h) {
 }
 switch (cmd) {
     case 'list':
-        getList(url+'home-new/', (args.s === true || args.save === true));
+        getListJSON(url + 'wp-json/wp/v2/posts?per_page=14&page=1&tags=9', (args.s === true || args.save === true));
         break;
     case 'page':
         let page = args._[1] || 1;
-        getList(url+'home-new/page/'+page, (args.s === true || args.save === true));
+        getListJSON(url + 'wp-json/wp/v2/posts?per_page=14&tags=9&page=' + page, (args.s === true || args.save === true));
         break;
     case 'search':
         let query = args._[1] || "";
@@ -34,14 +34,14 @@ switch (cmd) {
     case 'from':
         let laman = args._[1] || url;
         if (laman == url) {
-            getList(url, (args.s === true || args.save === true));
+            getListJSON(url + 'wp-json/wp/v2/posts?per_page=14&page=1&tags=9', (args.s === true || args.save === true));
         } else {
             getLinks(laman, (args.s === true || args.save === true));
         }
         break;
     case 'help':
         console.log(
-`Usage: samehadaku <command> [options]
+            `Usage: samehadaku <command> [options]
 
 where <command> is one of:
     list, page, search, help, from

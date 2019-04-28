@@ -10,7 +10,7 @@
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/anasrar/samehadaku-lewatin.svg) ![GitHub](https://img.shields.io/github/license/anasrar/samehadaku-lewatin.svg)
 
-Just Bypassing URL Shorter Using Node.js From Samehadaku.tv
+🏃‍ Just Bypassing URL Shorter Using Node.js From Samehadaku.tv
 
 # Install With NPM
 
@@ -87,6 +87,10 @@ $ samehadaku from "https://www.samehadaku.tv/2019/04/fairy-tail-episode-304-subt
 Link Save In JSON Format On Some .txt File
 
 # Changelog
+## 2.2.3 - 28/04/2019
+### Upadte
+- Fix Fetch List Anime Use JSON
+
 ## 2.1.2 - 15/04/2019
 ### Fix
 - Fix Pagination
