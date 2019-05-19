@@ -8,6 +8,7 @@ import fs from 'fs';
 import path from 'path';
 
 let shorturl = ['coeg.in', 'telondasmu.com', 'tetew.info', 'greget.space', 'siherp.com'],
+    safeurl = ['njiir.com'],
     collect = {};
 
 export const querySearch = (q, u) => {
@@ -195,9 +196,25 @@ export const Pancal = (url, save = false, config = {}) => {
         if (err && res.statusCode !== 200) throw err;
 
         let $ = cheerio.load(body);
-        urlnya = $('#splash').find('a[href*="?r=a"]').attr('href');
-        urlnya = Buffer.from(querySearch('r', urlnya), 'base64').toString('ascii');
-        next = shorturl.indexOf(urlz.parse(urlnya).hostname.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0]) !== -1 ? urlnya : false;
+        urlnya = $('#splash').find('a[href*="?r=a"]');
+        if (urlnya.length) {
+            urlnya = $('#splash').find('a[href*="?r=a"]').attr('href');
+            urlnya = Buffer.from(querySearch('r', urlnya), 'base64').toString('ascii');
+            next = [...shorturl, ...safeurl].indexOf(urlz.parse(urlnya).hostname.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0]) !== -1 ? urlnya : false;
+        } else {
+            if (safeurl.indexOf(urlz.parse(url).hostname.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0]) !== -1) {
+                urlnya = decodeURIComponent(querySearch('url', url))
+                urlnya = decodeURIComponent(Buffer.from(urlnya, 'base64').toString('ascii').substr(2).split('').reverse().join('').substr(2).split('').reverse().join(''))
+                let build = '';
+                for (let i = 0; i < urlnya.length; i++) {
+                    build = String.fromCharCode(40 ^ urlnya.charCodeAt(i)) + build;
+                }
+                urlnya = build
+                next = [...shorturl, ...safeurl].indexOf(urlz.parse(urlnya).hostname.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0]) !== -1 ? urlnya : false;
+            } else {
+                urlnya = url
+            }
+        }
 
     }).then(() => {
         if (next) {

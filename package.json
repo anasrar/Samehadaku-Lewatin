@@ -1,6 +1,6 @@
 {
   "name": "samehadaku-lewatin",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "description": "Just Samehadaku Bypass Short URL",
   "main": "app.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "Downloader",
     "Bypass"
   ],
-  "author": "Anas RAR",
+  "author": "Anas RAR <mynameanasrar@gmail.com> (https://anasrar.github.io)",
   "license": "MIT",
   "repository": {
     "type": "git",

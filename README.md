@@ -87,8 +87,12 @@ $ samehadaku from "https://www.samehadaku.tv/2019/04/fairy-tail-episode-304-subt
 Link Save In JSON Format On Some .txt File
 
 # Changelog
+## 2.2.5 - 19/05/2019
+### Update
+- Add New Safelink URL [ njiir.com ]
+
 ## 2.2.3 - 28/04/2019
-### Upadte
+### Update
 - Fix Fetch List Anime Use JSON
 
 ## 2.1.2 - 15/04/2019
