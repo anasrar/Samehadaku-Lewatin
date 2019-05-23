@@ -1,17 +1,17 @@
-import request from 'request-promise';
-import cheerio from 'cheerio';
-import inquirer from 'inquirer';
-import chalk from 'chalk';
-import urlz from 'url';
-import clipboard from 'clipboardy';
-import fs from 'fs';
-import path from 'path';
+const request = require('request-promise');
+const cheerio = require('cheerio');
+const inquirer = require('inquirer');
+const chalk = require('chalk');
+const urlz = require('url');
+const clipboard = require('clipboardy');
+const fs = require('fs');
+const path = require('path');
 
 let shorturl = ['coeg.in', 'telondasmu.com', 'tetew.info', 'greget.space', 'siherp.com'],
     safeurl = ['njiir.com'],
     collect = {};
 
-export const querySearch = (q, u) => {
+const querySearch = (q, u) => {
     if (!u) u = url;
     q = q.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
     var regexS = "[\\?&]" + q + "=([^&#]*)";
@@ -20,7 +20,7 @@ export const querySearch = (q, u) => {
     return results == null ? null : results[1];
 }
 
-export const getListSearch = (url, save = false) => {
+const getListSearch = (url, save = false) => {
     let arrQuest = [];
     request(url, (err, res, body) => {
         if (err && res.statusCode !== 200) throw err;
@@ -73,7 +73,7 @@ export const getListSearch = (url, save = false) => {
     })
 }
 
-export const getList = (url, save = false) => {
+const getList = (url, save = false) => {
     let arrQuest = [];
     request(url, (err, res, body) => {
         if (err && res.statusCode !== 200) throw err;
@@ -121,7 +121,7 @@ export const getList = (url, save = false) => {
     })
 }
 
-export const getLinks = (url, save = false) => {
+const getLinks = (url, save = false) => {
     let arrQuest = [];
 
     request(url, (err, res, body) => {
@@ -188,7 +188,7 @@ export const getLinks = (url, save = false) => {
     })
 }
 
-export const Pancal = (url, save = false, config = {}) => {
+const Pancal = (url, save = false, config = {}) => {
     let next = !1,
         urlnya;
 
@@ -232,7 +232,7 @@ export const Pancal = (url, save = false, config = {}) => {
     })
 }
 
-export const getListJSON = (url, save = false) => {
+const getListJSON = (url, save = false) => {
     let arrQuest = []
     request(url, (err, res, body) => {
         if (err && res.statusCode !== 200) throw err;
@@ -279,7 +279,7 @@ export const getListJSON = (url, save = false) => {
     })
 }
 
-export const getLinksHTML = (html, save = false) => {
+const getLinksHTML = (html, save = false) => {
     let arrQuest = [],
         stamp = new Date().getTime(),
         $ = cheerio.load(html)
@@ -338,4 +338,14 @@ export const getLinksHTML = (html, save = false) => {
 
 
     })
+}
+
+module.exports = {
+    querySearch,
+    getListSearch,
+    getList,
+    getLinks,
+    Pancal,
+    getListJSON,
+    getLinksHTML
 }

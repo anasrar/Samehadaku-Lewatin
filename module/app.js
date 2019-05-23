@@ -1,9 +1,9 @@
-import { getList, getLinks, Pancal, getListSearch, getListJSON } from './fetch';
-import chalk from 'chalk';
-import minimist from 'minimist';
+const { getList, getLinks, Pancal, getListSearch, getListJSON } = require('./fetch');
+const chalk = require('chalk');
+const minimist = require('minimist');
 
 let url = "https://www.samehadaku.tv/",
-    version = "2.2.3";
+    version = require('../package').version;
 
 console.log(`${chalk.yellow(`╔═╗╔═╗╔╦╗╔═╗╦ ║╔═╗╔╦╗╔═╗╦╔═║ ╦  ╦  ╔═╗╦ ╦╔═╗╔╦╗╦╔╗║
 ╚═╗╠═╣║║║║╣ ╠═╣╠═╣ ║║╠═╣╠╩╗║ ║  ║  ║╣ ║║║╠═╣ ║ ║║║║
