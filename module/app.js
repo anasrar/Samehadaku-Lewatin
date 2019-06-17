@@ -1,9 +1,10 @@
 const { getList, getLinks, Pancal, getListSearch, getListJSON } = require('./fetch');
+const { ZippyDL, GDriveDL } = require('./dl');
 const chalk = require('chalk');
 const minimist = require('minimist');
 
 let url = "https://www.samehadaku.tv/",
-    version = require('../package').version;
+    version = require('../package.json').version;
 
 console.log(`${chalk.yellow(`╔═╗╔═╗╔╦╗╔═╗╦ ║╔═╗╔╦╗╔═╗╦╔═║ ╦  ╦  ╔═╗╦ ╦╔═╗╔╦╗╦╔╗║
 ╚═╗╠═╣║║║║╣ ╠═╣╠═╣ ║║╠═╣╠╩╗║ ║  ║  ║╣ ║║║╠═╣ ║ ║║║║
@@ -44,10 +45,26 @@ switch (cmd) {
             `Usage: samehadaku <command> [options]
 
 where <command> is one of:
-    list, page, search, help, from
+    list, page, search, help, from, zippydl, gdrivedl
 
 options: [-s|--save] for save link to text file with json format`
         );
+        break;
+    case 'zippydl':
+        url = args._[1]
+        if (!url) {
+            console.log('Please insert url, e.g : samehadaku zippydl "https://xxx.zippyshare.com/v/xxx/file.html"')
+            break;
+        }
+        ZippyDL(url)
+        break;
+    case 'gdrivedl':
+        url = args._[1]
+        if (!url) {
+            console.log('Please insert url, e.g : samehadaku gdrive "https://drive.google.com/open?id=xxx" or "https://drive.google.com/file/d/xxx/view"')
+            break;
+        }
+        GDriveDL(url)
         break;
     default:
         console.error(`"${cmd}" is not a valid command!`)

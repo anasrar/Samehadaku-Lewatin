@@ -1,4 +1,11 @@
 # Changelog
+## 2.4.0 - 17/06/2019
+### Update
+- Add Command Downloader
+  - GDriveDL https://github.com/ariakm25/GDriveDL
+  - ZippyDL https://github.com/anasrar/Zippy-DL
+- Forget What Kind Bug That I Have To Fix 😐
+
 ## 2.3.5 - 19/05/2019
 ### Update
 - Remove Babel [#2](https://github.com/anasrar/Samehadaku-Lewatin/issues/2)

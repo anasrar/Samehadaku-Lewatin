@@ -12,7 +12,7 @@ let shorturl = ['coeg.in', 'telondasmu.com', 'tetew.info', 'greget.space', 'sihe
     collect = {};
 
 const querySearch = (q, u) => {
-    if (!u) u = url;
+    if (!u) return null;
     q = q.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
     var regexS = "[\\?&]" + q + "=([^&#]*)";
     var regex = new RegExp(regexS);

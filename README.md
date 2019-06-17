@@ -9,8 +9,9 @@
 [![NPM](https://nodei.co/npm/samehadaku-lewatin.png?compact=true)](https://nodei.co/npm/samehadaku-lewatin/)
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/anasrar/samehadaku-lewatin.svg) ![GitHub](https://img.shields.io/github/license/anasrar/samehadaku-lewatin.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/anasrar/Samehadaku-Lewatin.svg)
 
-🏃‍ Just Bypassing URL Shorter Using Node.js From Samehadaku.tv
+🏃‍ Just Bypassing URL Shorter Using Node.js From Samehadaku.tv, Work on Linux, Windows, and Termux
 
 # Install With NPM
 
@@ -91,6 +92,38 @@ $ samehadaku from "https://www.samehadaku.tv/2019/04/fairy-tail-episode-304-subt
 ```
 
 Link Save In JSON Format On Some .txt File
+
+## Downloader
+
+### Google Drive
+
+```
+samehadaku gdrivedl <url>
+```
+example
+
+```
+samehadaku gdrive "https://drive.google.com/open?id=xxx"
+or
+samehadaku gdrive "https://drive.google.com/file/d/xxx/view"
+```
+
+Thanks To [ariakm25](https://github.com/ariakm25) For Make Great Tools
+
+https://github.com/ariakm25/GDriveDL
+
+### Zippyshare
+
+```
+samehadaku zippydl <url>
+```
+example
+
+```
+samehadaku zippydl "https://xxx.zippyshare.com/v/xxx/file.html"
+```
+
+https://github.com/anasrar/Zippy-DL
 
 # Changelog
 [HERE](CHANGELOG.md)
