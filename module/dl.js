@@ -4,7 +4,8 @@ const _proggers = require('cli-progress'),
     _$ = require('cheerio'),
     _url = require('url'),
     _https = require('https'),
-    _axios = require('axios')
+    _axios = require('axios'),
+    _math = require('mathjs')
 
 const querySearch = (q, u) => {
     if (!u) return null;
@@ -32,8 +33,8 @@ const zippyGetLink = async (u) => {
     const url = _url.parse($('.flagen').attr('href'), true)
     const urlori = _url.parse(u)
     const key = url.query['key']
-    const time = parseInt(/var a = ([0-9]+);$/gm.exec($('#dlbutton').next().html())[1])
-    const dlurl = urlori.protocol + '//' + urlori.hostname + '/d/' + key + '/' + (Math.floor(time / 3) + time) + '/DOWNLOAD'
+    const time = _math.evaluate(/\(([\d\s\+\%]+?)\)/gm.exec($('#dlbutton').next().html())[1])
+    const dlurl = urlori.protocol + '//' + urlori.hostname + '/d/' + key + '/' + (time) + '/DOWNLOAD'
     console.log('✅  ' + _colors.green('Done'))
     return dlurl
 }
