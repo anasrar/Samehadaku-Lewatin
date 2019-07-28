@@ -1,4 +1,10 @@
 # Changelog
+## 2.4.2 - 28/07/2019
+### Update
+- Fix Tags Post Filter
+### Added
+- New Safelink URL [ eue.siherp.com ]
+
 ## 2.4.1 - 30/06/2019
 ### Update
 - [Fix Fix New Structure Zippyshare Download Page, Add mathjs For Evaluate Math String](https://github.com/anasrar/Zippy-DL/commit/2e335136fd4a684389addd57bf99369223c87eee)

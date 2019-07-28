@@ -9,6 +9,7 @@ const path = require('path');
 
 let shorturl = ['coeg.in', 'telondasmu.com', 'tetew.info', 'greget.space', 'siherp.com'],
     safeurl = ['njiir.com'],
+    safeurl2 = ['eue.siherp.com'],
     collect = {};
 
 const querySearch = (q, u) => {
@@ -200,7 +201,7 @@ const Pancal = (url, save = false, config = {}) => {
         if (urlnya.length) {
             urlnya = $('#splash').find('a[href*="?r=a"]').attr('href');
             urlnya = Buffer.from(querySearch('r', urlnya), 'base64').toString('ascii');
-            next = [...shorturl, ...safeurl].indexOf(urlz.parse(urlnya).hostname.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0]) !== -1 ? urlnya : false;
+            next = [...shorturl, ...safeurl, ...safeurl2].indexOf(urlz.parse(urlnya).hostname.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0]) !== -1 ? urlnya : false;
         } else {
             if (safeurl.indexOf(urlz.parse(url).hostname.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0]) !== -1) {
                 urlnya = decodeURIComponent(querySearch('url', url))
@@ -210,7 +211,11 @@ const Pancal = (url, save = false, config = {}) => {
                     build = String.fromCharCode(40 ^ urlnya.charCodeAt(i)) + build;
                 }
                 urlnya = build
-                next = [...shorturl, ...safeurl].indexOf(urlz.parse(urlnya).hostname.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0]) !== -1 ? urlnya : false;
+                next = [...shorturl, ...safeurl, ...safeurl2].indexOf(urlz.parse(urlnya).hostname.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0]) !== -1 ? urlnya : false;
+            } else if (safeurl2.indexOf(urlz.parse(url).hostname.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0]) !== -1) {
+                urlnya = decodeURIComponent(querySearch('url', url))
+                urlnya = decodeURIComponent(Buffer.from(urlnya, 'base64').toString('ascii'))
+                next = [...shorturl, ...safeurl, ...safeurl2].indexOf(urlz.parse(urlnya).hostname.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0]) !== -1 ? urlnya : false;
             } else {
                 urlnya = url
             }
@@ -252,14 +257,14 @@ const getListJSON = (url, save = false) => {
             name: `Next Page > ${(page + 1)}`,
             value: {
                 page: true,
-                url: "https://www.samehadaku.tv/wp-json/wp/v2/posts?per_page=14&tags=9&page=" + (page + 1)
+                url: "https://www.samehadaku.tv/wp-json/wp/v2/posts?per_page=14&page=" + (page + 1)
             }
         })
         if (page > 1) arrQuest.push({
             name: `Prev Page < ${(page - 1)}`,
             value: {
                 page: true,
-                url: "https://www.samehadaku.tv/wp-json/wp/v2/posts?per_page=14&tags=9&page=" + (page - 1)
+                url: "https://www.samehadaku.tv/wp-json/wp/v2/posts?per_page=14&page=" + (page - 1)
             }
         });
     }).then(() => {
