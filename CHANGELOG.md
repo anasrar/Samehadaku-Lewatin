@@ -1,4 +1,9 @@
 # Changelog
+## 2.4.3 - 08/08/2019
+### Update
+- Search Command Deprecated
+- Fix From Command
+
 ## 2.4.2 - 28/07/2019
 ### Update
 - Fix Tags Post Filter

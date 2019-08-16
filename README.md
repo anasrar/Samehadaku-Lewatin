@@ -67,11 +67,6 @@ Get List Anime From Specific Page
 $ samehadaku page 3
 ```
 
-Get List Anime From Search Page
-```
-$ samehadaku search "some anime"
-```
-
 Get List Anime From URL Page
 ```
 $ samehadaku from "https://www.samehadaku.tv/2019/04/fairy-tail-episode-304-subtitle-indonesia.html"
@@ -83,9 +78,6 @@ $ samehadaku list -s
 ```
 ```
 $ samehadaku page 2 --save
-```
-```
-$ samehadaku search "some anime" -s
 ```
 ```
 $ samehadaku from "https://www.samehadaku.tv/2019/04/fairy-tail-episode-304-subtitle-indonesia.html" --save

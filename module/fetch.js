@@ -130,7 +130,7 @@ const getLinks = (url, save = false) => {
 
         let $ = cheerio.load(body);
 
-        $('#the-post').find('.download-eps').each((i, el) => {
+        $('.download-eps').each((i, el) => {
             arrQuest.push({
                 name: $(el).prev().text(),
                 value: {
