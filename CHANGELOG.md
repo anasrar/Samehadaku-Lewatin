@@ -1,4 +1,12 @@
 # Changelog
+## 3.0.0 - 26/08/2019
+### Update
+- Use Async For Better Performance
+- Search Command Removed
+### Added
+- #4 New Safelink URL [ anjay.info ]
+
+
 ## 2.4.3 - 08/08/2019
 ### Update
 - Search Command Deprecated

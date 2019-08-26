@@ -1,4 +1,4 @@
-const { getLinks, getListJSON } = require('./fetch');
+const { getPage, getList } = require('./fetch');
 const { ZippyDL, GDriveDL } = require('./dl');
 const chalk = require('chalk');
 const minimist = require('minimist');
@@ -33,18 +33,18 @@ Repository : https://github.com/anasrar/Samehadaku-Lewatin
     }
     switch (cmd) {
         case 'list':
-            getListJSON(url + 'wp-json/wp/v2/posts?per_page=14&page=1', (args.s === true || args.save === true));
+            getList(url + 'wp-json/wp/v2/posts?per_page=14&page=1', (args.s === true || args.save === true));
             break;
         case 'page':
             let page = args._[1] || 1;
-            getListJSON(url + 'wp-json/wp/v2/posts?per_page=14&page=' + page, (args.s === true || args.save === true));
+            getList(url + 'wp-json/wp/v2/posts?per_page=14&page=' + page, (args.s === true || args.save === true));
             break;
         case 'from':
             let laman = args._[1] || url;
             if (laman == url) {
                 getListJSON(url + 'wp-json/wp/v2/posts?per_page=14&page=1', (args.s === true || args.save === true));
             } else {
-                getLinks(laman, (args.s === true || args.save === true));
+                getPage(laman, (args.s === true || args.save === true));
             }
             break;
         case 'help':
