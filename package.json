@@ -1,6 +1,6 @@
 {
   "name": "samehadaku-lewatin",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Just Samehadaku Bypass Short URL and Built Google Drive and Zippyshare Downloader",
   "main": "app.js",
   "scripts": {

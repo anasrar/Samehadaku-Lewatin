@@ -1,4 +1,8 @@
 # Changelog
+## 3.0.1 - 05/09/2019
+### Added
+- #4 New Safelink URL [ ahexa.com ]
+
 ## 3.0.0 - 26/08/2019
 ### Update
 - Use Async For Better Performance

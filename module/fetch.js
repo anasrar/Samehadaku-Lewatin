@@ -6,7 +6,7 @@ const fs = require('fs')
 const inquirer = require('inquirer')
 const urlz = require('url')
 
-let shorturl = ['coeg.in', 'telondasmu.com', 'tetew.info', 'greget.space', 'siherp.com'],
+let shorturl = ['coeg.in', 'telondasmu.com', 'tetew.info', 'greget.space', 'siherp.com', 'ahexa.com'],
     safeurl = ['njiir.com'],
     safeurl2 = ['eue.siherp.com'],
     safelink2 = ['anjay.info'],
