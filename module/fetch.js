@@ -126,6 +126,8 @@ const Pancal = async (url, save = false, config = {}) => {
     let next = !1
     let urlnya = null
 
+    console.log(chalk.green(`Try To Skip ${url}`))
+
     let { data } = await axios.get(url)
 
     let $ = cheerio.load(data)

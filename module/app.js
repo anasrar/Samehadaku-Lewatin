@@ -5,7 +5,7 @@ const minimist = require('minimist');
 const request = require('request-promise');
 const semver = require('semver')
 
-let url = "https://www.samehadaku.tv/",
+let url = "https://www.samehada.tv/",
     version = require('../package.json').version;
 
 console.log(`${chalk.yellow(`╔═╗╔═╗╔╦╗╔═╗╦ ║╔═╗╔╦╗╔═╗╦╔═║ ╦  ╦  ╔═╗╦ ╦╔═╗╔╦╗╦╔╗║
